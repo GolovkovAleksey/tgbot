@@ -1,0 +1,1 @@
+INSERT INTO INCOME (id,chat_id, income) values (1,2,3);

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import ru.skillfactorydemo.tgbot.entity.ActiveChat;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,9 +18,6 @@ class ActiveChatRepositoryTest {
 
     @Test
     public void testRepo_found() {
-        final ActiveChat activeChat = new ActiveChat();
-        activeChat.setChatId(12345L);
-        activeChatRepository.save(activeChat);
         Optional<ActiveChat> activeChatByChatId = activeChatRepository.findActiveChatByChatId(12345L);
         assertTrue(activeChatByChatId.isPresent());
         assertEquals(12345L, activeChatByChatId.get().getChatId());
@@ -27,9 +25,6 @@ class ActiveChatRepositoryTest {
 
     @Test
     public void testRepo_notFound() {
-        final ActiveChat activeChat = new ActiveChat();
-        activeChat.setChatId(12345L);
-        activeChatRepository.save(activeChat);
         Optional<ActiveChat> activeChatByChatId = activeChatRepository.findActiveChatByChatId(54321L);
         assertFalse(activeChatByChatId.isPresent());
     }
